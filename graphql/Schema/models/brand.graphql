@@ -1,0 +1,18 @@
+extend type Query {
+    # brands: [Brand!]! @all
+    brands: [Brand] @field(resolver: "BrandQuery@brandsList")
+}
+
+type Brand {
+    id: ID!
+    name: String!
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+extend type Mutation {
+    createBrand(name: String!, description: String): Brand
+    updateBrand(id: ID!, name: String!, description: String): Brand
+    deleteBrand(id: ID!): Brand
+}
