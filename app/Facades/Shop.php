@@ -15,19 +15,4 @@ class Shop extends Facade
     {
         return 'shop';
     }
-
-    public static function call($controllerMethod, $args)
-    {
-        $shopInstance = app('shop'); // Resolve the instance of your Shop class
-
-        if (!is_array($args)) {
-            return [];
-        }
-
-        if (!empty($args) && is_array($args)) {
-            $shopInstance->request->request->add($args);
-        }
-
-        return app()->call(config('shop.controllers') . $controllerMethod);
-    }
 }

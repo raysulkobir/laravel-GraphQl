@@ -11,8 +11,11 @@ type Brand {
     updated_at: DateTime!
 }
 
+
+input CreateBrandInput {
+    name: String! @rules(apply: ["required", "max:255"])
+}
+
 extend type Mutation {
-    createBrand(name: String!, description: String): Brand
-    updateBrand(id: ID!, name: String!, description: String): Brand
-    deleteBrand(id: ID!): Brand
+    createBrand(input: CreateBrandInput! @spread): Brand @field(resolver: "BrandMutation@store")
 }

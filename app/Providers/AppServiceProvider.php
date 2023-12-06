@@ -3,8 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Facades\Shop;
-
+use App\Helper\Shop;
 class AppServiceProvider extends ServiceProvider
 {
     /**

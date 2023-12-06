@@ -1,5 +1,4 @@
 <?php
-// File: app/GraphQL/Queries/BrandQuery.php
 
 namespace App\GraphQL\Queries;
 

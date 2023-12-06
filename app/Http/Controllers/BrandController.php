@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
@@ -30,9 +31,18 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrandRequest $request)
+    public function store(Request $request)
     {
-        //
+        // return $request->all();
+        // $validatedData = $request->validated();
+
+        $brand = new Brand();
+        $brand->name = $request->name;
+        $brand->save();
+        // $brand = Brand::create($request->all());
+
+        // Return the created brand or any other response
+        return response()->json(['brand' =>"success"]);
     }
 
     /**
