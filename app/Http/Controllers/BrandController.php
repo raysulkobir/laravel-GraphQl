@@ -31,18 +31,12 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        // return $request->all();
-        // $validatedData = $request->validated();
+        $validatedData = $request->validated();
 
-        $brand = new Brand();
-        $brand->name = $request->name;
-        $brand->save();
-        // $brand = Brand::create($request->all());
-
-        // Return the created brand or any other response
-        return response()->json(['brand' =>"success"]);
+        $brand = Brand::create($validatedData);
+        return response()->json(['message' => 'Brand created successfully']);
     }
 
     /**

@@ -1,12 +1,10 @@
 extend type Query {
-    # brands: [Brand!]! @all
     brands: [Brand] @field(resolver: "BrandQuery@brandsList")
 }
 
 type Brand {
     id: ID!
     name: String!
-    description: String
     created_at: DateTime!
     updated_at: DateTime!
 }
