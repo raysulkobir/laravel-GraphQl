@@ -36,7 +36,7 @@ class BrandController extends Controller
         $validatedData = $request->validated();
 
         $brand = Brand::create($validatedData);
-        return response()->json(['message' => 'Brand created successfully']);
+        return ['status' => 1, 'message' => 'Brand created successfully'];
     }
 
     /**

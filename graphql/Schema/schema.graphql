@@ -40,6 +40,7 @@ type User {
     updated_at: DateTime!
 }
 
+#import common.graphql
 #import models/*.graphql
 
 
