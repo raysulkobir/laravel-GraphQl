@@ -1,5 +1,5 @@
 extend type Query {
-    brands: [Brand] @field(resolver: "BrandQuery@brandsList")
+    brands: [Brand] @field(resolver: "BrandQuery@index")
 }
 
 type Brand {
@@ -13,7 +13,17 @@ input CreateBrandInput {
     name: String! @rules(apply: ["required", "max:255"])
 }
 
+input UpdateBrandInput {
+    id: Int!
+    name: String! @rules(apply: ["required", "max:255"])
+}
+
 extend type Mutation {
     createBrand(input: CreateBrandInput! @spread): Response
         @field(resolver: "BrandMutation@store")
+
+    updateBrand(input: UpdateBrandInput! @spread): Response
+        @field(resolver: "BrandMutation@update")
+
+
 }

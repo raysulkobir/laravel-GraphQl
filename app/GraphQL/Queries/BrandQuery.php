@@ -8,8 +8,8 @@ use App\Facades\Shop;
 
 class BrandQuery
 {
-    public function brandsList($rootValue, array $args, GraphQLContext $context)
+    public function index($rootValue, array $args, GraphQLContext $context)
     {
-        return Shop::call('App\Http\Controllers\BrandController@brandsList', $args);
+        return Shop::call('App\Http\Controllers\BrandController@index', $args);
     }
 }

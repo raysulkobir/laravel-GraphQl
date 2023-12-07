@@ -12,5 +12,9 @@ class BrandMutation
     {
         return Shop::call('App\Http\Controllers\BrandController@store', $args);
     }
+    public function update($rootValue, array $args, GraphQLContext $context)
+    {
+        return Shop::call('App\Http\Controllers\BrandController@update', $args);
+    }
 
 }

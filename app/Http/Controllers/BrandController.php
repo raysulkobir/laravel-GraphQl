@@ -16,10 +16,6 @@ class BrandController extends Controller
     {
         return Brand::all();
     }
-
-    public function brandsList(){
-        return Brand::all();
-    }
     /**
      * Show the form for creating a new resource.
      */
@@ -58,9 +54,15 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateBrandRequest $request, $id)
     {
-        //
+
+
+        return ['status' => 1, 'message' =>" $name"];
+        // return "ok";
+
+        // $brand = Brand::update($validatedData);
+        return ['status' => 1, 'message' => $request->all()];
     }
 
     /**
