@@ -54,22 +54,37 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBrandRequest $request, $id)
+    public function update(UpdateBrandRequest $request)
     {
+        $validatedData = $request->validated();
 
+        $id = $request->input('id');
+        $brand = Brand::find($id);
 
-        return ['status' => 1, 'message' =>" $name"];
-        // return "ok";
-
-        // $brand = Brand::update($validatedData);
-        return ['status' => 1, 'message' => $request->all()];
+        // Check if the brand exists
+        if ($brand) {
+            $brand->update($validatedData);
+            return ['status' => 1, 'message' => 'Brand update successfully'];
+        } else {
+            // Return an error response if the brand doesn't exist
+            return ['status' => 0, 'message' => 'Brand not found'];
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->input('id');
+        // Find the brand by ID and delete it
+        $brand = Brand::find($id);
+
+        if ($brand) {
+            $brand->delete();
+            return ['status' => 1, 'message' => 'Brand deleted successfully'];
+        } else {
+            return ['status' => 0, 'message' => 'Brand not found'];
+        }
     }
 }

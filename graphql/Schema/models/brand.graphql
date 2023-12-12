@@ -14,8 +14,12 @@ input CreateBrandInput {
 }
 
 input UpdateBrandInput {
-    id: Int!
+    id: ID!
     name: String! @rules(apply: ["required", "max:255"])
+}
+
+input DeleteBrandInput{
+    id: ID!
 }
 
 extend type Mutation {
@@ -24,6 +28,9 @@ extend type Mutation {
 
     updateBrand(input: UpdateBrandInput! @spread): Response
         @field(resolver: "BrandMutation@update")
+
+    destroyBrand(input: DeleteBrandInput! @spread): Response
+        @field(resolver: "BrandMutation@destroy")
 
 
 }

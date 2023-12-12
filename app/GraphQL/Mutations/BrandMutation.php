@@ -16,5 +16,9 @@ class BrandMutation
     {
         return Shop::call('App\Http\Controllers\BrandController@update', $args);
     }
+    public function destroy($rootValue, array $args, GraphQLContext $context)
+    {
+        return Shop::call('App\Http\Controllers\BrandController@destroy', $args);
+    }
 
 }
